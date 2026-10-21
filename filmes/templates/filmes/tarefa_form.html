@@ -1,3 +1,9 @@
+
+{% extends 'filmes/base.html' %}
+
+{% block title %}{{ titulo }} | CineInfo{% endblock %}
+
+{% block content %}
 <h1>{{ titulo }}</h1>
 
 <form method="post">
@@ -7,3 +13,4 @@
     <button type="submit">Salvar</button>
     <a href="{% url 'filmes:listar_tarefas' %}">Cancelar</a>
 </form>
+{% endblock %}

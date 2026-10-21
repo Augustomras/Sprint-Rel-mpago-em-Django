@@ -1,43 +1,42 @@
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Projetos</title>
-</head>
-<body>
-    <h1>Cadastro de Projetos</h1>
+{% extends 'filmes/base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
+{% block title %}Projetos | CineInfo{% endblock %}
 
-        {{ form.as_p }}
+{% block content %}
+<h1>Cadastro de Projetos</h1>
 
-        <button type="submit">Cadastrar projeto</button>
-    </form>
+<form method="post">
+    {% csrf_token %}
 
-    <h2>Projetos cadastrados</h2>
+    {{ form.as_p }}
 
-    {% for projeto in projetos %}
-        <div>
-            <h3>{{ projeto.nome }}</h3>
-            <p>{{ projeto.descricao }}</p>
-            <p>Data de criação: {{ projeto.data_criacao }}</p>
-             <a href="{% url 'filmes:editar_projeto' projeto.pk %}">Editar</a>
+    <button type="submit">Cadastrar projeto</button>
+</form>
 
-            <a href="{% url 'filmes:excluir_projeto' projeto.pk %}">Excluir </a>
-        </div>
-        
-    {% empty %}
-        <p>Nenhum projeto cadastrado.</p>
-    {% endfor %}
-</body>
+<h2>Projetos cadastrados</h2>
 
+{% for projeto in projetos %}
+    <div>
+        <h3>{{ projeto.nome }}</h3>
+        <p>{{ projeto.descricao }}</p>
+        <p>Data de criação: {{ projeto.data_criacao }}</p>
+
+        <a href="{% url 'filmes:editar_projeto' projeto.pk %}">
+            Editar
+        </a>
+
+        <a href="{% url 'filmes:excluir_projeto' projeto.pk %}">
+            Excluir
+        </a>
+    </div>
+{% empty %}
+    <p>Nenhum projeto cadastrado.</p>
+{% endfor %}
 
 {% if messages %}
     {% for message in messages %}
         <p>{{ message }}</p>
     {% endfor %}
 {% endif %}
-
-</html>
+{% endblock %}

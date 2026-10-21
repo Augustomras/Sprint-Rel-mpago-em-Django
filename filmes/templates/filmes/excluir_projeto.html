@@ -1,25 +1,23 @@
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Excluir projeto</title>
-</head>
-<body>
-    <h1>Excluir projeto</h1>
 
-    <p>
-        Tem certeza de que deseja excluir
-        "{{ projeto.nome }}"?
-    </p>
+{% extends 'filmes/base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Confirmar exclusão</button>
-    </form>
+{% block title %}Excluir projeto | CineInfo{% endblock %}
 
-    <a href="{% url 'filmes:listar_projetos' %}">
-        Cancelar
-    </a>
-</body>
-</html>
+{% block content %}
+<h1>Excluir projeto</h1>
+
+<p>
+    Tem certeza de que deseja excluir
+    "{{ projeto.nome }}"?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar exclusão</button>
+</form>
+
+<a href="{% url 'filmes:listar_projetos' %}">
+    Cancelar
+</a>
+{% endblock %}
