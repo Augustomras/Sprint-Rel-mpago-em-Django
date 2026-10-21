@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Projetos</title>
+</head>
+<body>
+    <h1>Cadastro de Projetos</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Cadastrar projeto</button>
+    </form>
+
+    <h2>Projetos cadastrados</h2>
+
+    {% for projeto in projetos %}
+        <div>
+            <h3>{{ projeto.nome }}</h3>
+            <p>{{ projeto.descricao }}</p>
+            <p>Data de criação: {{ projeto.data_criacao }}</p>
+        </div>
+    {% empty %}
+        <p>Nenhum projeto cadastrado.</p>
+    {% endfor %}
+</body>
+</html>
