@@ -1,21 +1,20 @@
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar projeto</title>
-</head>
-<body>
-    <h1>Editar projeto</h1>
+{% extends 'filmes/base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar alterações</button>
-    </form>
+{% block title %}Editar projeto | CineInfo{% endblock %}
 
-    <a href="{% url 'filmes:listar_projetos' %}">
-        Voltar para a listagem
-    </a>
-</body>
-</html>
+{% block content %}
+<h1>Editar projeto</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Salvar alterações</button>
+</form>
+
+<a href="{% url 'filmes:listar_projetos' %}">
+    Voltar para a listagem
+</a>
+{% endblock %}
+

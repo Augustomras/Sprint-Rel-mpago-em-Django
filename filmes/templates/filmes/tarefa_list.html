@@ -1,3 +1,9 @@
+
+{% extends 'filmes/base.html' %}
+
+{% block title %}Tarefas | CineInfo{% endblock %}
+
+{% block content %}
 <h1>Tarefas</h1>
 
 <a href="{% url 'filmes:criar_tarefa' %}">Nova tarefa</a>
@@ -11,6 +17,7 @@
             <th>Ações</th>
         </tr>
     </thead>
+
     <tbody>
         {% for tarefa in tarefas %}
         <tr>
@@ -18,8 +25,13 @@
             <td>{{ tarefa.projeto }}</td>
             <td>{{ tarefa.concluida|yesno:"Sim,Não" }}</td>
             <td>
-                <a href="{% url 'filmes:editar_tarefa' tarefa.pk %}">Editar</a>
-                <a href="{% url 'filmes:excluir_tarefa' tarefa.pk %}">Excluir</a>
+                <a href="{% url 'filmes:editar_tarefa' tarefa.pk %}">
+                    Editar
+                </a>
+
+                <a href="{% url 'filmes:excluir_tarefa' tarefa.pk %}">
+                    Excluir
+                </a>
             </td>
         </tr>
         {% empty %}
@@ -29,3 +41,4 @@
         {% endfor %}
     </tbody>
 </table>
+{% endblock %}

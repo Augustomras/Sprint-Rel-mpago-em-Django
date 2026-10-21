@@ -1,11 +1,16 @@
+
+{% extends 'filmes/base.html' %}
+
+{% block title %}Excluir tarefa | CineInfo{% endblock %}
+
+{% block content %}
 <h1>Excluir tarefa</h1>
 
-<p>
-    Deseja excluir a tarefa "{{ tarefa.titulo }}"?
-</p>
+<p>Deseja excluir a tarefa "{{ tarefa.titulo }}"?</p>
 
 <form method="post">
     {% csrf_token %}
     <button type="submit">Confirmar exclusão</button>
     <a href="{% url 'filmes:listar_tarefas' %}">Cancelar</a>
 </form>
+{% endblock %}
