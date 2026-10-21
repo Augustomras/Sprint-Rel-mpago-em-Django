@@ -1,0 +1,9 @@
+<h1>{{ titulo }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Salvar</button>
+    <a href="{% url 'filmes:listar_tarefas' %}">Cancelar</a>
+</form>

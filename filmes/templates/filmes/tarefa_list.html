@@ -1,0 +1,31 @@
+<h1>Tarefas</h1>
+
+<a href="{% url 'filmes:criar_tarefa' %}">Nova tarefa</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Projeto</th>
+            <th>Concluída</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tarefa in tarefas %}
+        <tr>
+            <td>{{ tarefa.titulo }}</td>
+            <td>{{ tarefa.projeto }}</td>
+            <td>{{ tarefa.concluida|yesno:"Sim,Não" }}</td>
+            <td>
+                <a href="{% url 'filmes:editar_tarefa' tarefa.pk %}">Editar</a>
+                <a href="{% url 'filmes:excluir_tarefa' tarefa.pk %}">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nenhuma tarefa cadastrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
